@@ -15,7 +15,7 @@ const middlewares = (app) => {
 }
 
 const routes = (app) => {
-
+    app.use('/coperex/v1/auth', authRoutes);
 }
 
 const conectarDB = async () => {
