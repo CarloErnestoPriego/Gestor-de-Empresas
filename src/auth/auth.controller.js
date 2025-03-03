@@ -1,37 +1,46 @@
 import { hash, verify } from 'argon2'
+import User from '../user/user.model.js';  // Asegúrate de que el modelo de usuario esté importado correctamente
+import { generarJWT } from '../helpers/generate-jwt.js';  // Suponiendo que este es tu generador de JWT
 
-export const register = async (req, res) => {
+export const login = async (req, res) => {
+    const { email, username, password } = req.body;  // Recibimos el correo o nombre de usuario y la contraseña
     try {
-        const data = req.body;
+        // Buscar el usuario en la base de datos por correo o nombre de usuario
+        const user = await User.findOne({
+            $or: [{ email: email }, { username: username }]  // Buscamos por cualquiera de los dos campos
+        });
 
-        let profilePicture = req.file ? req.file.filename : null;
+        if (!user) {
+            return res.status(400).json({
+                message: "CREDENCIALES INVALIDAS",
+                error: "NO EXISTE EL USUARIO O CORREO INGRESADO"
+            });
+        }
 
-        const encryptedPassword = await hash (data.password);
-
-        const user = await Usuario.create({
-            name : data.name,
-            surname : data.surname,
-            username : data.username,
-            email : data.email,
-            phone : data.phone,
-            password : encryptedPassword,
-            role : data.role,
-            profilePicture
-        })
-
-        return res.status(201).json({
-            message: "User registered successfully",
-            userDetails: {
-                user : user.email
-            }
-        })
+        const hashedPassword = user.password;
         
-    } catch (error) {
-        console.log(error);
+        const validPassword = await verify(hashedPassword, password);
+        if (!validPassword) {
+            return res.status(400).json({
+                message: "CREDENCIALES INVALIDAS",
+                error: "CONTRASEÑA INCORRECTA"
+            });
+        }
 
+        // Generar un JWT para el usuario autenticado
+        const token = await generarJWT(user.id);  // Suponiendo que `generateJWT` es una función que genera un JWT
+
+        // Devolver la respuesta con el token y los detalles del usuario
+        return res.status(200).json({
+            message: "LOGIN COMPLETADO",
+            userDetails: {
+                token: token
+            }
+        });
+    } catch (err) {
         return res.status(500).json({
-            message: "User registration failed",
+            message: "LOGIN FALLIDO, ERROR DEL SERVIDOR",
             error: err.message
-        })
+        });
     }
-}
+};

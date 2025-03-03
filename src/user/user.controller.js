@@ -1,30 +1,43 @@
-import mongoose from 'mongoose';
+// user.service.js
+
 import faker from 'faker';
-import User from './models/User';
+import User from './user.model.js'; 
 
-mongoose.connect('mongodb://localhost:27017/yourDatabase', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Conectado a la base de datos'))
-  .catch(err => console.log('Error al conectar a la base de datos', err));
+export const createRandomUser = async () => {
 
-async function createRandomUser() {
-  const user = new User({
-    name: faker.name.firstName(),
-    surname: faker.name.lastName(),
-    username: faker.internet.userName(),
-    email: faker.internet.email(),
-    password: faker.internet.password(8),
-    profilePicture: faker.image.avatar(),
-    phone: faker.phone.phoneNumber('########'),
-    role: faker.random.arrayElement(['ADMIN_ROLE', 'USER_ROLE']),
-    estado: true,
-  });
+    const userCount = await User.countDocuments();
 
-  try {
-    const savedUser = await user.save();
-    console.log('Usuario generado:', savedUser);
-  } catch (error) {
-    console.error('Error al guardar el usuario:', error);
-  }
-}
+    if (userCount > 0) {
+        console.log('<< Ya existe un usuario en la base de datos. No se generará un nuevo usuario. >>');
+        return;
+    }
 
-createRandomUser();
+    const name = faker.name.firstName();
+    const surname = faker.name.lastName();
+    const username = faker.internet.userName();
+    const email = faker.internet.email();
+    const password = faker.internet.password(8);
+    const profilePicture = faker.image.avatar();
+    const phone = faker.phone.phoneNumber('########');
+    const role = 'ADMIN_ROLE'; 
+    const estado = true;
+
+    const user = new User({
+        name,
+        surname,
+        username,
+        email,
+        password,
+        profilePicture,
+        phone,
+        role,
+        estado,
+    });
+
+    try {
+        const savedUser = await user.save();
+        console.log('Usuario generado:', savedUser);
+    } catch (error) {
+        console.error('Error al guardar el usuario:', error);
+    }
+};

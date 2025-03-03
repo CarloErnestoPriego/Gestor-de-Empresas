@@ -1,14 +1,15 @@
 import { Router } from "express";
-import { register } from "./auth.controller.js";
+import { login } from "./auth.controller.js";
+import { deleteFileOnError } from "../middlewares/delete-file-on-error.js";
+import { loginValidator } from '../middlewares/validator.js'
 
 const router = Router();
 
 router.post(
-    '/register',
-    uploadProfilePicture.single("profilePicture"),
-    registerValidator,
+    "/login",
+    loginValidator,
     deleteFileOnError,
-    register
-);
+    login
+)
 
 export default router;

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { createEnterprise, getEnterprises, getEnterpriseById, updateEnterprise, deleteEnterprise } from "./enterprise.controller";
+import { createEnterprise, getEnterprises, getEnterpriseById, updateEnterprise, deleteEnterprise } from "./enterprise.controller.js";
 
 const router = Router();
 

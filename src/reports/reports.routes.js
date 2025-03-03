@@ -1,5 +1,5 @@
 import express from 'express';
-import { generateEnterpriseReport } from '../controllers/enterpriseController.js';
+import { generateEnterpriseReport } from '../reports/reports.controller.js';
 
 const router = express.Router();
 

@@ -1,5 +1,5 @@
 import ExcelJS from 'exceljs';
-import Enterprise from '../models/enterprise.model.js'; // Asegúrate de que la ruta sea correcta
+import Enterprise from '../enterprise/enterprise.model.js';
 
 export const generateEnterpriseReport = async (req, res) => {
     try {

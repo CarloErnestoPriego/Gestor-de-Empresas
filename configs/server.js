@@ -1,10 +1,15 @@
 'use strict'
 
-import express from "express"
-import cors from "cors"
-import helmet from "helmet"
-import morgan from "morgan"
-import { dbConnection } from "./mongo.js"
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import morgan from "morgan";
+import { dbConnection } from "./mongo.js";
+import authRoutes from '../src/auth/auth.routes.js';
+import reportsRoutes from '../src/reports/reports.routes.js';
+import clientRoutes from '../src/client/client.routes.js';
+import enterpriseRoutes from '../src/enterprise/enterprise.routes.js';
+import {createRandomUser} from '../src/user/user.controller.js'
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}));
@@ -16,12 +21,17 @@ const middlewares = (app) => {
 
 const routes = (app) => {
     app.use('/coperex/v1/auth', authRoutes);
+    app.use('/coperex/v1/dowloadReports', reportsRoutes);
+    app.use('/coperex/v1/client', clientRoutes);
+    app.use('/coperex/v1/enterprise', enterpriseRoutes);
 }
 
 const conectarDB = async () => {
     try {
         await dbConnection();
         console.log('Conexion a la Base de Datos Exitosa');
+
+        await createRandomUser();
     } catch (error) {
         console.error('Error Conectandose a la Base de Datos', error);
         process.exit(1);
