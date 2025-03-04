@@ -9,6 +9,7 @@ import authRoutes from '../src/auth/auth.routes.js';
 import reportsRoutes from '../src/reports/reports.routes.js';
 import clientRoutes from '../src/client/client.routes.js';
 import enterpriseRoutes from '../src/enterprise/enterprise.routes.js';
+import filterRoutes from '../src/filter/filter.routes.js'
 import {createRandomUser} from '../src/user/user.controller.js'
 
 const middlewares = (app) => {
@@ -23,6 +24,7 @@ const routes = (app) => {
     app.use('/coperex/v1/auth', authRoutes);
     app.use('/coperex/v1/client', clientRoutes);
     app.use('/coperex/v1/enterprise', enterpriseRoutes);
+    app.use('/coperex/v1/filter', filterRoutes);
     app.use('/coperex/v1/reports', reportsRoutes);
 }
 
