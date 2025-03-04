@@ -22,10 +22,6 @@ const enterpriseSchema = new Schema({
         type: String,
         required: [true, 'El número de teléfono de la empresa es requerido']
     },
-    status: {
-        type: Boolean,
-        default: true
-    },
     impactLevel: {
         type: String,
         enum: ['Bajo', 'Medio', 'Alto'], // Puede ser una cadena con valores predefinidos
@@ -35,6 +31,10 @@ const enterpriseSchema = new Schema({
         type: Number,
         required: [true, 'Los años de trayectoria son requeridos'],
         min: [0, 'Los años de trayectoria no pueden ser negativos']
+    },
+    status: {
+        type: Boolean,
+        default: true
     },
 }, { timestamps: true });
 

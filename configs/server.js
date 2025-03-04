@@ -21,9 +21,9 @@ const middlewares = (app) => {
 
 const routes = (app) => {
     app.use('/coperex/v1/auth', authRoutes);
-    app.use('/coperex/v1/dowloadReports', reportsRoutes);
     app.use('/coperex/v1/client', clientRoutes);
     app.use('/coperex/v1/enterprise', enterpriseRoutes);
+    app.use('/coperex/v1/reports', reportsRoutes);
 }
 
 const conectarDB = async () => {

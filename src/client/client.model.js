@@ -12,7 +12,7 @@ const clientSchema = new Schema({
     email: {
         type: "String",
         required: [true, 'El correo del cliente es requrido']
-    },
+    },  
     phone: {
         type: "String",
         required: [true, 'El numero de telefono del cliente es requrido']
@@ -21,6 +21,16 @@ const clientSchema = new Schema({
         type: Boolean,
         default: true
     }
-})
+});
+
+clientSchema.methods.toJSON = function () {
+
+    const { __v, password, _id, ...usuario } = this.toObject();
+
+    usuario.uid = _id;
+
+    return usuario
+}
+
 
 export default model('Client', clientSchema);

@@ -1,11 +1,15 @@
-import express from 'express';
-import { generateEnterpriseReport } from '../reports/reports.controller.js';
+import { Router } from 'express';
+import { generateEnterpriseReport, generateClientReport } from '../reports/reports.controller.js';
 
-const router = express.Router();
+const router = Router();
 
 router.get(
-    '/downloadReport',
+    '/downloadEnterpriseReport',
      generateEnterpriseReport
     );
+router.get(
+    '/downloadClientReport',
+    generateClientReport
+)
 
 export default router;
