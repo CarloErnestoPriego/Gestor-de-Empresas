@@ -1,5 +1,4 @@
-// user.service.js
-
+import { hash } from 'argon2';
 import faker from 'faker';
 import User from './user.model.js'; 
 
@@ -22,12 +21,15 @@ export const createRandomUser = async () => {
     const role = 'ADMIN_ROLE'; 
     const estado = true;
 
+    // Encriptar la contraseña antes de guardarla
+    const hashedPassword = await hash(password);
+
     const user = new User({
         name,
         surname,
         username,
         email,
-        password,
+        password: hashedPassword,
         profilePicture,
         phone,
         role,
