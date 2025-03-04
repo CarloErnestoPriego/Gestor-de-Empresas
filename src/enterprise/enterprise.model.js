@@ -24,7 +24,7 @@ const enterpriseSchema = new Schema({
     },
     impactLevel: {
         type: String,
-        enum: ['Bajo', 'Medio', 'Alto'], // Puede ser una cadena con valores predefinidos
+        enum: ['Bajo', 'Medio', 'Alto'],
         required: [true, 'El nivel de impacto es requerido']
     },
     yearsOfExperience: {

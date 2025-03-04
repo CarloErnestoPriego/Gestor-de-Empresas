@@ -1,23 +1,30 @@
 import Enterprise from '../enterprise/enterprise.model.js';
-import { isValidObjectId } from 'mongoose';
+import Client from '../client/client.model.js';
 
-export const filterAndEditEnterprises = async (req, res) => {
-    const { filter, sort, editData } = req.body;
+export const filterEntities = async (req, res) => {
+    const { filter, sort, entityType } = req.body;
 
     try {
         let query = {};
 
-        if (filter) {
-            if (filter.yearsOfExperience) {
-                query.yearsOfExperience = { $gte: filter.yearsOfExperience };
-            }
+        if (entityType === 'enterprise') {
+            if (filter) {
+                if (filter.yearsOfExperience) {
+                    query.yearsOfExperience = { $gte: filter.yearsOfExperience };
+                }
 
-            if (filter.businessCategory) {
-                query.businessCategory = filter.businessCategory;
+                if (filter.businessCategory) {
+                    query.businessCategory = filter.businessCategory;
+                }
+            }
+        } else if (entityType === 'client') {
+            if (filter) {
+                if (filter.yearsOfExperience) {
+                    query.yearsOfExperience = { $gte: filter.yearsOfExperience };
+                }
             }
         }
 
-        // Ordenar (A-Z o Z-A)
         let sortCriteria = {};
         if (sort) {
             if (sort === 'A-Z') {
@@ -25,44 +32,39 @@ export const filterAndEditEnterprises = async (req, res) => {
             } else if (sort === 'Z-A') {
                 sortCriteria.name = -1;
             } else if (sort === 'yearsOfExperience') {
-                sortCriteria.yearsOfExperience = 1; 
+                sortCriteria.yearsOfExperience = 1;
             } else if (sort === 'yearsOfExperienceDesc') {
                 sortCriteria.yearsOfExperience = -1;
             }
         }
 
-        const enterprises = await Enterprise.find(query).sort(sortCriteria);
+        let entities;
+        if (entityType === 'enterprise') {
+            console.log("Query para empresas:", query);
+            entities = await Enterprise.find(query).sort(sortCriteria);
+        } else if (entityType === 'client') {
+            entities = await Client.find(query).sort(sortCriteria);
+        }
 
-        if (editData && editData.id) {
-            const { id, ...updateFields } = editData;
-            
-            if (!isValidObjectId(id)) {
-                return res.status(400).json({ success: false, msg: 'ID inválido' });
-            }
-            const updatedEnterprise = await Enterprise.findByIdAndUpdate(id, updateFields, { new: true });
-            
-            if (!updatedEnterprise) {
-                return res.status(404).json({ success: false, msg: 'Empresa no encontrada' });
-            }
-
+        if (entities.length === 0) {
             return res.status(200).json({
                 success: true,
-                msg: 'Empresa actualizada con éxito',
-                data: updatedEnterprise,
+                msg: `${entityType.charAt(0).toUpperCase() + entityType.slice(1)}(s) no encontrados`,
+                data: [],
             });
         }
 
         return res.status(200).json({
             success: true,
-            msg: 'Empresas encontradas',
-            data: enterprises,
+            msg: `${entityType.charAt(0).toUpperCase() + entityType.slice(1)}(s) encontrados`,
+            data: entities,
         });
 
     } catch (error) {
-        console.error('Error al filtrar y editar empresas:', error);
+        console.error(`Error al filtrar ${entityType}s:`, error);
         return res.status(500).json({
             success: false,
-            msg: 'Error al filtrar y editar las empresas',
+            msg: `Error al filtrar las ${entityType}s`,
             error: error.message || error,
         });
     }
