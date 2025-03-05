@@ -38,4 +38,13 @@ const enterpriseSchema = new Schema({
     },
 }, { timestamps: true });
 
+enterpriseSchema.methods.toJSON = function () {
+
+    const { __v, password, _id, ...enterprise } = this.toObject();
+
+    enterprise.uid = _id;
+
+    return enterprise
+}
+
 export default model('Enterprise', enterpriseSchema);

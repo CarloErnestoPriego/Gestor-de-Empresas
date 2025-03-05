@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "d5d4660a-eb07-4011-aee7-384492bbfc99",
+		"name": "Gestor de Empresas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42635842"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Immanuel15\",\r\n    \"email\": \"Shayne23@hotmail.com\",\r\n    \"password\": \"$argon2id$v=19$m=65536,t=3,p=4$wBjMHovWx8ydN9koTcc51w$kzi3cHIuz6jTTfUBnyJhtA8ufPEWSogSz2MJDR7y0vE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postClient",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M3OTM1MGRhYjc2ZmY2NjNmNmQwZWQiLCJpYXQiOjE3NDExMzI5MDIsImV4cCI6MTc0MTEzNjUwMn0.mnoc_tB73abKRgX_o8XfS4F5wV4R46mt-FvsDiGopro",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Priscila\",\r\n    \"lastname\": \"Presley\",\r\n    \"email\": \"preley@yahoo.com\",\r\n    \"phone\": \"12487659\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/client/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"client",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getClient",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/client/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"client",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putClient",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M3OTM1MGRhYjc2ZmY2NjNmNmQwZWQiLCJpYXQiOjE3NDExMzI5MDIsImV4cCI6MTc0MTEzNjUwMn0.mnoc_tB73abKRgX_o8XfS4F5wV4R46mt-FvsDiGopro",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone\": \"78561023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/client/67c79508dab76ff663f6d0f1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"client",
+						"67c79508dab76ff663f6d0f1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByIdClient",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M3OTM1MGRhYjc2ZmY2NjNmNmQwZWQiLCJpYXQiOjE3NDExMzI5MDIsImV4cCI6MTc0MTEzNjUwMn0.mnoc_tB73abKRgX_o8XfS4F5wV4R46mt-FvsDiGopro",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/client/67c79508dab76ff663f6d0f1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"client",
+						"67c79508dab76ff663f6d0f1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postEnterprise",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M3OTM1MGRhYjc2ZmY2NjNmNmQwZWQiLCJpYXQiOjE3NDExMzI5MDIsImV4cCI6MTc0MTEzNjUwMn0.mnoc_tB73abKRgX_o8XfS4F5wV4R46mt-FvsDiGopro",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Cisco\",\r\n    \"industry\": \"Tecnología\",\r\n    \"description\": \"Patrocina Kinal.\",\r\n    \"email\": \"cisco.systems@outlook.com\",\r\n    \"phone\": \"55501234\",\r\n    \"impactLevel\": \"Alto\",\r\n    \"yearsOfExperience\": 10\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/enterprise/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"enterprise",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEnterprise",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M3OTM1MGRhYjc2ZmY2NjNmNmQwZWQiLCJpYXQiOjE3NDExMzI5MDIsImV4cCI6MTc0MTEzNjUwMn0.mnoc_tB73abKRgX_o8XfS4F5wV4R46mt-FvsDiGopro",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/enterprise/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"enterprise",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putEnterprise",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M3OTM1MGRhYjc2ZmY2NjNmNmQwZWQiLCJpYXQiOjE3NDExMzI5MDIsImV4cCI6MTc0MTEzNjUwMn0.mnoc_tB73abKRgX_o8XfS4F5wV4R46mt-FvsDiGopro",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone\": \"78561023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/enterprise/67c7968adab76ff663f6d0fc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"enterprise",
+						"67c7968adab76ff663f6d0fc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByIdEnterprise",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M3OTM1MGRhYjc2ZmY2NjNmNmQwZWQiLCJpYXQiOjE3NDExMzI5MDIsImV4cCI6MTc0MTEzNjUwMn0.mnoc_tB73abKRgX_o8XfS4F5wV4R46mt-FvsDiGopro",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/enterprise/67c7968adab76ff663f6d0fc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"enterprise",
+						"67c7968adab76ff663f6d0fc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EnterpriseReport",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M3OTM1MGRhYjc2ZmY2NjNmNmQwZWQiLCJpYXQiOjE3NDExMzI5MDIsImV4cCI6MTc0MTEzNjUwMn0.mnoc_tB73abKRgX_o8XfS4F5wV4R46mt-FvsDiGopro",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/reports/downloadEnterpriseReport",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"reports",
+						"downloadEnterpriseReport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ClientReport",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M3OTM1MGRhYjc2ZmY2NjNmNmQwZWQiLCJpYXQiOjE3NDExMzI5MDIsImV4cCI6MTc0MTEzNjUwMn0.mnoc_tB73abKRgX_o8XfS4F5wV4R46mt-FvsDiGopro",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/reports/downloadClientReport",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"reports",
+						"downloadClientReport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EnterpriseAndClientFilter",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M3OTM1MGRhYjc2ZmY2NjNmNmQwZWQiLCJpYXQiOjE3NDExMzI5MDIsImV4cCI6MTc0MTEzNjUwMn0.mnoc_tB73abKRgX_o8XfS4F5wV4R46mt-FvsDiGopro",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filter\": {\r\n        \"yearsOfExperience\": 10,\r\n        \"businessCategory\": \"Aeronautica\"\r\n    },\r\n    \"sort\": \"A-Z\",\r\n    \"entityType\": \"enterprise\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/coperex/v1/filter/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"coperex",
+						"v1",
+						"filter",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

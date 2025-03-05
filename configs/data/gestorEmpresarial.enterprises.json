@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "67c7968adab76ff663f6d0fc"
+  },
+  "name": "Cisco",
+  "industry": "Tecnología",
+  "description": "Patrocina Kinal.",
+  "email": "cisco.systems@outlook.com",
+  "phone": "78561023",
+  "impactLevel": "Alto",
+  "yearsOfExperience": 10,
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-05T00:10:50.057Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T00:13:52.921Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c797989a9300fd546c8344"
+  },
+  "name": "Space X",
+  "industry": "Aeronautica",
+  "description": "Elon Musk es el jefe",
+  "email": "e.musk@outlook.com",
+  "phone": "55501234",
+  "impactLevel": "Alto",
+  "yearsOfExperience": 10,
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-05T00:15:20.310Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T00:15:20.310Z"
+  },
+  "__v": 0
+}]

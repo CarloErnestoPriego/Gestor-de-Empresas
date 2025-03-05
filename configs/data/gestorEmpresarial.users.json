@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "67c79350dab76ff663f6d0ed"
+  },
+  "name": "Claire",
+  "surname": "Donnelly",
+  "username": "Immanuel15",
+  "email": "Shayne23@hotmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$wBjMHovWx8ydN9koTcc51w$kzi3cHIuz6jTTfUBnyJhtA8ufPEWSogSz2MJDR7y0vE",
+  "profilePicture": "https://cdn.fakercloud.com/avatars/ryhanhassan_128.jpg",
+  "phone": "57883791",
+  "role": "ADMIN_ROLE",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-03-04T23:57:04.267Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T23:57:04.267Z"
+  }
+}]
